@@ -1,0 +1,65 @@
+{
+  "bark": {
+    "push": "",
+    "icon": "",
+    "sound": "birdsong",
+    "group": "ZaiZaiCat-Checkin",
+    "level": "active",
+    "url": ""
+  },
+  "server": {
+    "sckey": "",
+    "sendkey": ""
+  },
+  "coolpush": {
+    "skey": "",
+    "qq": true,
+    "wx": false,
+    "email": false
+  },
+  "qmsg": {
+    "key": "",
+    "type": "private"
+  },
+  "telegram": {
+    "bot_token": "",
+    "user_id": "",
+    "api_host": "",
+    "proxy": ""
+  },
+  "feishu": {
+    "key": ""
+  },
+  "dingtalk": {
+    "access_token": "",
+    "secret": ""
+  },
+  "qywx": {
+    "key": "",
+    "corpid": "",
+    "agentid": "",
+    "corpsecret": "",
+    "touser": "",
+    "media_id": "",
+    "origin": ""
+  },
+  "pushplus": {
+    "token": "",
+    "topic": ""
+  },
+  "pushdeer": {
+    "pushkey": "",
+    "url": "https://api2.pushdeer.com/message/push",
+    "type": "text"
+  },
+  "gotify": {
+    "url": "",
+    "token": "",
+    "priority": "3"
+  },
+  "ntfy": {
+    "url": "https://ntfy.sh",
+    "topic": "",
+    "priority": "3"
+  }
+}
