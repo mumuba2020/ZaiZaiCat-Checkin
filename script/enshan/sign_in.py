@@ -229,8 +229,7 @@ class EnshanSignInManager:
             send_notification(
                 title=title,
                 content=content,
-                sound=sound,
-                group=self.site_name
+                sound=sound
             )
             logger.info(f"✅ {self.site_name}签到推送发送成功")
 
