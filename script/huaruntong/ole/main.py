@@ -1,4 +1,9 @@
 """
+new Env('华润通Ole签到');
+cron: 1 1 1 1 1
+"""
+
+"""
 Ole 签到主程序
 """
 import json

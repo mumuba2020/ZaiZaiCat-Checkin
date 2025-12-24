@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+new Env('鸿星尔克签到');
+cron: 1 1 1 1 1
+"""
+
+"""
 鸿星尔克签到脚本
 
 该脚本用于自动执行鸿星尔克小程序的签到任务，包括：
@@ -9,7 +14,7 @@
 - 执行签到操作
 - 输出执行结果统计
 
-Author: Assistant
+Author: ZaiZaiCat
 Date: 2025-11-28
 """
 

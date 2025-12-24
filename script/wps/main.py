@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+new Env('WPS签到抽奖');
+cron: 1 1 1 1 1
+"""
+
+"""
 WPS自动签到和抽奖脚本
 
 该脚本用于自动执行WPS的签到和抽奖任务，包括：

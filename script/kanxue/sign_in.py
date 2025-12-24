@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+new Env('看雪论坛签到');
+cron: 1 1 1 1 1
+"""
+"""
 看雪论坛自动签到脚本
 
 功能：

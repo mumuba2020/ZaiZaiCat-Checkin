@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+new Env('顺丰快递积分任务');
+cron: 1 1 1 1 1
+"""
+"""
 顺丰快递积分任务自动化脚本
 
 功能：

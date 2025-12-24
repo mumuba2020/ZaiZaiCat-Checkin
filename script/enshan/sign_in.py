@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
+new Env('恩山论坛签到');
+cron: 1 1 1 1 1
+"""
+
+"""
 恩山论坛自动签到脚本
 
 功能：
