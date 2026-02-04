@@ -104,8 +104,8 @@ class EnshanSignInManager:
 
         logger.info(f"开始执行账号 [{account_name}] 的签到...")
 
-        if not cookies or not formhash:
-            error_msg = "cookies或formhash为空"
+        if not cookies:
+            error_msg = "cookies为空"
             logger.error(f"账号 [{account_name}] {error_msg}")
             return {
                 'account_name': account_name,
@@ -331,4 +331,3 @@ def main():
 if __name__ == '__main__':
     exit_code = main()
     sys.exit(exit_code)
-
