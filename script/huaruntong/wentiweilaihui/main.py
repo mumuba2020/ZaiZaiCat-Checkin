@@ -31,6 +31,14 @@ def load_config():
         return json.load(f)
 
 
+def mask_mobile(mobile):
+    """脱敏用于日志展示的手机号。"""
+    value = str(mobile or "")
+    if len(value) <= 7:
+        return "*" * len(value) if value else "未配置"
+    return f"{value[:3]}****{value[-4:]}"
+
+
 def process_account(account_config):
     """处理单个账号的签到"""
     account_name = account_config.get('account_name', '未知账号')
@@ -45,11 +53,11 @@ def process_account(account_config):
         'error': None,
         'sign_message': None,
         'points': None,
-        'available_points': None
+        'points_error': None
     }
 
     print("=" * 50)
-    print(f"账号: {account_name} ({mobile})")
+    print(f"账号: {account_name} ({mask_mobile(mobile)})")
     print("=" * 50)
 
     # 创建API实例
@@ -63,34 +71,28 @@ def process_account(account_config):
         msg = sign_result.get('msg', '签到成功')
         print(f"✓ 签到成功: {msg}")
         result_info['sign_message'] = msg
+        result_info['success'] = True
     else:
         msg = sign_result.get('msg', '签到失败')
         print(f"✗ 签到失败: {msg}")
         result_info['error'] = msg
 
     # 查询积分
-    print("\n查询万象星积分...")
+    print("\n查询会员积分...")
     points_result = api.query_points()
 
     if points_result.get("success"):
-        data = points_result.get("data", {})
+        data = points_result.get("result", {})
         points = data.get("points", 0)
-        available_points = data.get("availablePoints", 0)
-        hold_points = data.get("holdPoints", 0)
 
         print(f"✓ 查询成功")
-        print(f"  总积分: {points}")
-        print(f"  可用积分: {available_points}")
-        print(f"  冻结积分: {hold_points}")
+        print(f"  当前积分: {points}")
 
         result_info['points'] = points
-        result_info['available_points'] = available_points
-        result_info['success'] = True
     else:
         msg = points_result.get('msg', '查询失败')
         print(f"✗ 查询失败: {msg}")
-        if not result_info['error']:
-            result_info['error'] = msg
+        result_info['points_error'] = msg
 
     print("\n" + "=" * 50)
     return result_info
@@ -137,10 +139,11 @@ def send_notification_summary(all_results, start_time, end_time):
         for result in all_results:
             account_name = result.get('account_name', '未知账号')
             if result.get('success'):
-                points = result.get('points', 0)
-                available = result.get('available_points', 0)
                 content_parts.append(f"  ✅ [{account_name}]")
-                content_parts.append(f"     总积分: {points} | 可用: {available}")
+                if result.get('points') is not None:
+                    content_parts.append(f"     当前积分: {result['points']}")
+                else:
+                    content_parts.append("     积分查询失败")
             else:
                 error = result.get('error', '未知错误')
                 if len(error) > 30:
